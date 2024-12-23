@@ -10,6 +10,7 @@ public class PromanApplication {
 		SpringApplication.run(PromanApplication.class, args);
 		
 		System.out.println("Hii Hello I am Rahul");
+		System.out.println("Hii Hello I am Rahul");
 	}
 
 }
