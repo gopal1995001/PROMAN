@@ -40,7 +40,7 @@ public class Product {
 
     @Column(name = "image")
     // @Lob
-    private byte[] image;
+    private String image;
     // Getters and Setters
 }
 
