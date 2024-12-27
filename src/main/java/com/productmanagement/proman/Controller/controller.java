@@ -44,12 +44,16 @@ public class controller {
    @PostMapping("/save")
     public Product createProduct(@RequestPart("image") MultipartFile image,
                                  @RequestPart("product") String productJson) throws IOException {
+                                  System.out.println("Image: " + image);
+                                  System.out.println("Product JSON: " + productJson);
+
         // Convert JSON string to Product object
         ObjectMapper objectMapper = new ObjectMapper();
         Product product = objectMapper.readValue(productJson, Product.class);
 
         // Upload image to Cloudinary
-        Map uploadResult = cloudinary.uploader().upload(image.getBytes(), ObjectUtils.emptyMap());
+        @SuppressWarnings("unchecked")
+        Map<String, Object> uploadResult = (Map<String, Object>) cloudinary.uploader().upload(image.getBytes(), ObjectUtils.emptyMap());
 
         // Get URL of uploaded image
         String imageUrl = (String) uploadResult.get("url");
